@@ -22,14 +22,42 @@ public class MessageService {
     }
 
     public MessageModel saveMessage(MessageModel messageModel) {
-        return messageRepository.saveMessage(messageModel);
+        if (messageModel.getId() ==null){
+            return  messageRepository.saveMessage(messageModel);
+        }else{
+            Optional<MessageModel> optionalMessageModel=messageRepository.getMessage(messageModel.getId());
+            if (optionalMessageModel.isEmpty()){
+                return messageRepository.saveMessage(messageModel);
+            }else {
+                return messageModel;
+            }
+        }
     }
 
-    public void deleteMessage (Integer id) {
-        messageRepository.deleteMessage(id);
+    public MessageModel updateMessage(MessageModel messageModel){
+        if (messageModel.getId()!=null){
+            Optional<MessageModel> optionalMessageModel=messageRepository.getMessage(messageModel.getId());
+            if (!optionalMessageModel.isEmpty()){
+                if (messageModel.getMessageText()!=null){
+                    optionalMessageModel.get().setMessageText(messageModel.getMessageText());
+                }
+                messageRepository.saveMessage(optionalMessageModel.get());
+                return optionalMessageModel.get();
+            }else {
+                return messageModel;
+            }
+        }else {
+            return messageModel;
+        }
     }
 
-    public MessageModel updateMessage(MessageModel messageModel) {
-        return messageRepository.updateMessage(messageModel);
+    public boolean deleteMessage(Integer id){
+        Boolean aBoolean=getMessage(id).map(messageModel -> {
+            messageRepository.deleteMessage(messageModel);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
+
+
 }

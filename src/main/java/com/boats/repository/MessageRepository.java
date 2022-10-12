@@ -26,8 +26,8 @@ public class MessageRepository {
         return messageCrudRepository.save(messageModel);
     }
 
-    public void deleteMessage(Integer id) {
-        messageCrudRepository.deleteById(id);
+    public void deleteMessage(MessageModel messageModel) {
+        messageCrudRepository.delete(messageModel);
     }
 
     /*El de actualizar no es necesario

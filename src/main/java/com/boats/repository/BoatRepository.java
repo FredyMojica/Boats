@@ -26,8 +26,8 @@ public class BoatRepository {
         return boatCrudRepository.save(boatModel);/*Acá se van a modificar tres parámetros, sin el id*/
     }
 
-    public void deleteBoat(Integer id) {
-        boatCrudRepository.deleteById(id);
+    public void deleteBoat(BoatModel boatModel) {
+        boatCrudRepository.delete(boatModel);
     }
 
     public BoatModel updateBoat(BoatModel boatModel) {

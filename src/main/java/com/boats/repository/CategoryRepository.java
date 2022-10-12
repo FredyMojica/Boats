@@ -26,7 +26,7 @@ public class CategoryRepository {
         return categoryCrudRepository.save(categoryModel);
     }
 
-    public void deleteCategory(Integer id) {
-        categoryCrudRepository.deleteById(id);
+    public void deleteCategory(CategoryModel categoryModel) {
+        categoryCrudRepository.delete(categoryModel);
     }
 }

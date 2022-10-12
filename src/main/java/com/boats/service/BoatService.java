@@ -32,12 +32,7 @@ public class BoatService {
                 return boatModel;
             }
         }
-
     }
-
-    /*public void deleteBoat(Integer id) {
-        boatRepository.deleteBoat(id);
-    }*/
 
     public BoatModel updateBoat(BoatModel boatModel) {
         if (boatModel.getId()!=null){
@@ -70,7 +65,7 @@ public class BoatService {
 
     public boolean deleteBoat(Integer id){
         Boolean aBoolean=getBoat(id).map(boatModel -> {
-            boatRepository.deleteBoat(id);
+            boatRepository.deleteBoat(boatModel);
             return true;
         }).orElse(false);
         return aBoolean;
