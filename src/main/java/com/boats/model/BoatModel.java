@@ -14,20 +14,27 @@ public class BoatModel implements Serializable {
     private String model;
     private Integer categoryId;
 
+    private String name;
+
+    private String description;
     public BoatModel() {
     }/*Por si necesito instanciar uno vacio y pasarle los parámetros, recordemos que el constructor es un método que permite instanciar una clase*/
 
-    public BoatModel(String brand, String model, Integer categoryId) {
+    public BoatModel(String brand, String model, Integer categoryId, String name, String description) {
         this.brand = brand;
         this.model = model;
         this.categoryId = categoryId;
+        this.name = name;
+        this.description =description;
     }/*Como el Id es autogenerado en la base de datos*/
 
-    public BoatModel(Integer id, String brand, String model, Integer categoryId) {
+    public BoatModel(Integer id, String brand, String model, Integer categoryId, String name, String description) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.categoryId = categoryId;
+        this.name = name;
+        this.description =description;
     }/*Para cuando actualice un boat, esto es "sobrecarga"*/
 
     public Integer getId() {
@@ -58,10 +65,27 @@ public class BoatModel implements Serializable {
         return categoryId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
     /*El método ToString, hace que cuando le pida los parámetros de la clase si me imprima los parámetros*/
+
     @Override
     public String toString() {
         return "BoatModel{" +
@@ -69,6 +93,8 @@ public class BoatModel implements Serializable {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
