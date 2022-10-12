@@ -32,8 +32,8 @@ public class MessageController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean deleteMessage(@PathVariable Integer id) {
-        return messageService.deleteMessage(id);
+    public void deleteMessage(@PathVariable Integer id) {
+        messageService.deleteMessage(id);
     }
 
     @PutMapping("/update")

@@ -25,8 +25,8 @@ public class MessageService {
         return messageRepository.saveMessage(messageModel);
     }
 
-    public boolean deleteMessage (Integer id) {
-        return messageRepository.deleteMessage(id);
+    public void deleteMessage (Integer id) {
+        messageRepository.deleteMessage(id);
     }
 
     public MessageModel updateMessage(MessageModel messageModel) {

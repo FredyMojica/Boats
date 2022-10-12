@@ -26,13 +26,13 @@ public class MessageRepository {
         return messageCrudRepository.save(messageModel);
     }
 
-    public boolean deleteMessage(Integer id) {
+    public void deleteMessage(Integer id) {
         messageCrudRepository.deleteById(id);
-        return true;
     }
 
+    /*El de actualizar no es necesario
     public MessageModel updateMessage(MessageModel messageModel) {
         return messageCrudRepository.save(messageModel);
-    }
+    }*/
 
 }

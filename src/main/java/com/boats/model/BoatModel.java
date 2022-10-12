@@ -11,7 +11,7 @@ public class BoatModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String brand;
-    private String model;
+    private String year;
     private Integer categoryId;
 
     private String name;
@@ -20,18 +20,18 @@ public class BoatModel implements Serializable {
     public BoatModel() {
     }/*Por si necesito instanciar uno vacio y pasarle los parámetros, recordemos que el constructor es un método que permite instanciar una clase*/
 
-    public BoatModel(String brand, String model, Integer categoryId, String name, String description) {
+    public BoatModel(String brand, String year, Integer categoryId, String name, String description) {
         this.brand = brand;
-        this.model = model;
+        this.year = year;
         this.categoryId = categoryId;
         this.name = name;
         this.description =description;
     }/*Como el Id es autogenerado en la base de datos*/
 
-    public BoatModel(Integer id, String brand, String model, Integer categoryId, String name, String description) {
+    public BoatModel(Integer id, String brand, String year, Integer categoryId, String name, String description) {
         this.id = id;
         this.brand = brand;
-        this.model = model;
+        this.year = year;
         this.categoryId = categoryId;
         this.name = name;
         this.description =description;
@@ -53,12 +53,12 @@ public class BoatModel implements Serializable {
         this.brand = brand;
     }
 
-    public String getModel() {
-        return model;
+    public String getYear() {
+        return year;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public Integer getCategoryId() {
@@ -91,7 +91,7 @@ public class BoatModel implements Serializable {
         return "BoatModel{" +
                 "id=" + id +
                 ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
                 ", categoryId=" + categoryId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

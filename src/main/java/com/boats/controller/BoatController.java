@@ -32,8 +32,8 @@ public class BoatController {
     }
 
     @DeleteMapping("/delete/{id}")/*El PathVariable es para saber que voy a recibir por la dirección*/
-    public boolean deleteBoat(@PathVariable Integer id) {
-        return boatService.deleteBoat(id);
+    public void deleteBoat(@PathVariable Integer id) {
+        boatService.deleteBoat(id);
     }
 
     @PutMapping("/update")
