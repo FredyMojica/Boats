@@ -3,6 +3,7 @@ package com.boats.controller;
 import com.boats.model.MessageModel;
 import com.boats.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Message")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class MessageController {
 
     @Autowired
@@ -22,21 +23,24 @@ public class MessageController {
     }
 
     @GetMapping("/{id}")
-    public Optional<MessageModel> getMessage(@PathVariable Integer id){
+    public Optional<MessageModel> getMessage(@PathVariable ("id") Integer id){
         return messageService.getMessage(id);
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageModel saveMessage(@RequestBody MessageModel messageModel) {
         return messageService.saveMessage(messageModel);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteMessage(@PathVariable Integer id) {
-        messageService.deleteMessage(id);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteMessage(@PathVariable ("id") Integer id) {
+        return messageService.deleteMessage(id);
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageModel updateMessage(@RequestBody MessageModel messageModel) {
         return messageService.updateMessage(messageModel);
     }

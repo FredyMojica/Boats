@@ -3,6 +3,7 @@ package com.boats.controller;
 import com.boats.model.CategoryModel;
 import com.boats.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Category")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CategoryController {
 
     @Autowired
@@ -22,21 +23,24 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public Optional<CategoryModel> getCategory(@PathVariable Integer id) {
+    public Optional<CategoryModel> getCategory(@PathVariable ("id") Integer id) {
         return categoryService.getCategory(id);
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public CategoryModel saveCategory(@RequestBody CategoryModel categoryModel){
         return categoryService.saveCategory(categoryModel);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteCategory(@PathVariable Integer id){
-        categoryService.deleteCategory(id);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteCategory(@PathVariable ("id") Integer id){
+        return categoryService.deleteCategory(id);
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public CategoryModel updateCategory(@RequestBody CategoryModel categoryModel){
         return categoryService.updateCategory(categoryModel);
     }
