@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "score")
-
 public class ScoreModel implements Serializable {
 
     @Id

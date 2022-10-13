@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/Message")
 @CrossOrigin(origins = "*")
 public class MessageController {
 
@@ -21,7 +21,7 @@ public class MessageController {
         return messageService.getAllMessages();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Optional<MessageModel> getMessage(@PathVariable Integer id){
         return messageService.getMessage(id);
     }

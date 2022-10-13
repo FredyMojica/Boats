@@ -2,6 +2,7 @@ package com.boats.service;
 
 import com.boats.model.ClientModel;
 import com.boats.repository.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ClientService {
+    @Autowired
     private ClientRepository clientRepository;
 
     public List<ClientModel> getAllClients(){
