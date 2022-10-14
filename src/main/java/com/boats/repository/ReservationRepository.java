@@ -26,7 +26,8 @@ public class ReservationRepository {
         return  reservationCrudRepository.save(reservationModel);
     }
 
-    public void deleteReservation(ReservationModel reservationModel) {
+    public boolean deleteReservation(ReservationModel reservationModel) {
         reservationCrudRepository.delete(reservationModel);
+        return true;
     }
 }

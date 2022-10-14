@@ -44,9 +44,6 @@ public class BoatService {
                 if (boatModel.getYear()!=null){
                     optionalBoatModel.get().setYear(boatModel.getYear());
                 }
-                if (boatModel.getCategoryId()!=null){
-                    optionalBoatModel.get().setCategoryId(boatModel.getCategoryId());
-                }
                 if (boatModel.getName()!=null){
                     optionalBoatModel.get().setName(boatModel.getName());
                 }

@@ -26,7 +26,8 @@ public class AdminRepository {
         return adminCrudRepository.save(adminModel);
     }
 
-    public void deleteAdmin(AdminModel adminModel){
+    public boolean deleteAdmin(AdminModel adminModel){
         adminCrudRepository.delete(adminModel);
+        return true;
     }
 }

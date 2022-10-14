@@ -1,49 +1,32 @@
 package com.boats.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="message")
+@NoArgsConstructor
+@Getter
+@Setter
 
 public class MessageModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
     private String messageText;
 
-    public MessageModel() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "idBoat")
+    @JsonIgnoreProperties({"messages", "clients", "reservations"})
+    private BoatModel boat;
 
-    public MessageModel(String messageText) {
-        this.messageText = messageText;
-    }
+    @ManyToOne
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"messages", "clients", "reservations"})
+    private ClientModel client;
 
-    public MessageModel(Integer id, String messageText) {
-        this.id = id;
-        this.messageText = messageText;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getMessageText() {
-        return messageText;
-    }
-
-    public void setMessageText(String messageText) {
-        this.messageText = messageText;
-    }
-
-    @Override
-    public String toString() {
-        return "MessageModel{" +
-                "id=" + id +
-                ", messageText='" + messageText + '\'' +
-                '}';
-    }
 }

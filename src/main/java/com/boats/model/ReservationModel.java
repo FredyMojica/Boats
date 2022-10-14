@@ -1,63 +1,40 @@
 package com.boats.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
+@NoArgsConstructor
+@Getter
+@Setter
+
 public class ReservationModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer id;
+    private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
+    private String status= "created";
 
-    public ReservationModel() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"reservations"})
+    private BoatModel boat;
 
-    public ReservationModel(Date startDate, Date devolutionDate) {
-        this.startDate = startDate;
-        this.devolutionDate = devolutionDate;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"reservations", "messages"})
+    private ClientModel client;
 
-    public ReservationModel(Integer id, Date startDate, Date devolutionDate) {
-        this.id = id;
-        this.startDate = startDate;
-        this.devolutionDate = devolutionDate;
-    }
+    private String score;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getDevolutionDate() {
-        return devolutionDate;
-    }
-
-    public void setDevolutionDate(Date devolutionDate) {
-        this.devolutionDate = devolutionDate;
-    }
-
-    @Override
-    public String toString() {
-        return "ReservationModel{" +
-                "id=" + id +
-                ", startDate=" + startDate +
-                ", devolutionDate=" + devolutionDate +
-                '}';
-    }
 }

@@ -26,7 +26,8 @@ public class CategoryRepository {
         return categoryCrudRepository.save(categoryModel);
     }
 
-    public void deleteCategory(CategoryModel categoryModel) {
+    public boolean deleteCategory(CategoryModel categoryModel) {
         categoryCrudRepository.delete(categoryModel);
+        return true;
     }
 }

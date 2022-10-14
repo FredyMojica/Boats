@@ -26,8 +26,9 @@ public class MessageRepository {
         return messageCrudRepository.save(messageModel);
     }
 
-    public void deleteMessage(MessageModel messageModel) {
+    public boolean deleteMessage(MessageModel messageModel) {
         messageCrudRepository.delete(messageModel);
+        return true;
     }
 
     /*El de actualizar no es necesario

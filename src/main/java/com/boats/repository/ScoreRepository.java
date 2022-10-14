@@ -26,7 +26,8 @@ public class ScoreRepository {
         return scoreCrudRepository.save(scoreModel);
     }
 
-    public void deleteScore(ScoreModel scoreModel){
+    public boolean deleteScore(ScoreModel scoreModel){
         scoreCrudRepository.delete(scoreModel);
+        return true;
     }
 }

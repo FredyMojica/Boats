@@ -26,7 +26,8 @@ public class ClientRepository {
         return  clientCrudRepository.save(clientModel);
     }
 
-    public void deleteClient(ClientModel clientModel){
+    public boolean deleteClient(ClientModel clientModel){
         clientCrudRepository.delete(clientModel);
+        return true;
     }
 }
