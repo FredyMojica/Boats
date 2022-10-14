@@ -1,6 +1,8 @@
 package com.boats.controller;
 
+import com.boats.model.ClientReport;
 import com.boats.model.ReservationModel;
+import com.boats.model.ReservationReport;
 import com.boats.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,5 +44,20 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public ReservationModel updateReservation(@RequestBody ReservationModel reservationModel){
         return reservationService.updateReservation(reservationModel);
+    }
+
+    @GetMapping("/report-status")
+    public ReservationReport getReservationsReport(){
+        return reservationService.getReservationStatusReport();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<ReservationModel> getReservationReportDates(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationPeriod(dateOne, dateTwo);
+    }
+
+    @GetMapping("/report-clients")
+    public List<ClientReport> getClients(){
+        return  reservationService.getTopClients();
     }
 }
