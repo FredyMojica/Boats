@@ -50,6 +50,10 @@ public class BoatService {
                 if (boatModel.getDescription()!=null){
                     optionalBoatModel.get().setDescription(boatModel.getDescription());
                 }
+
+                if (boatModel.getCategory()!=null){
+                    optionalBoatModel.get().setCategory(boatModel.getCategory());
+                }
                 boatRepository.saveBoat(optionalBoatModel.get());
                 return optionalBoatModel.get();
             }else{

@@ -41,6 +41,12 @@ public class MessageService {
                 if (messageModel.getMessageText()!=null){
                     optionalMessageModel.get().setMessageText(messageModel.getMessageText());
                 }
+                if (messageModel.getBoat()!=null){
+                    optionalMessageModel.get().setBoat(messageModel.getBoat());
+                }
+                if (messageModel.getClient()!=null){
+                    optionalMessageModel.get().setClient(messageModel.getClient());
+                }
                 messageRepository.saveMessage(optionalMessageModel.get());
                 return optionalMessageModel.get();
             }else {

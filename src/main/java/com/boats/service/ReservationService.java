@@ -51,6 +51,12 @@ public class ReservationService {
                 if (reservationModel.getDevolutionDate()!=null){
                     optionalReservationModel.get().setDevolutionDate(reservationModel.getDevolutionDate());
                 }
+                if (reservationModel.getBoat()!=null){
+                    optionalReservationModel.get().setBoat(reservationModel.getBoat());
+                }
+                if (reservationModel.getClient()!=null){
+                    optionalReservationModel.get().setClient(reservationModel.getClient());
+                }
                 reservationRepository.saveReservation(optionalReservationModel.get());
                 return  optionalReservationModel.get();
             }else {
